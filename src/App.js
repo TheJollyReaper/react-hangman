@@ -6,7 +6,6 @@ import GuessInput from './GuessInput';
 
 function App() {
 const [word, setWord] = useState("placeholder word")
-// const [letters, addLetter] = useState([])
 
 // Fetch data from dictionary and select random word
 const getData=()=>{
@@ -30,37 +29,26 @@ const getData=()=>{
     });
 }
 
-
-
   return (
-    // <img src={background}></img>
     <Wrap style={{ backgroundImage: `url(${background})` }}>
       <Header>
         Hangman
 
-        {/* Display selected word
-        <div>
-          {
-            // data && data.length>0 && data[Math.floor(Math.random() * data.length)].word
-            word
-          }
-        </div> */}
-
         <GuessInput word={word}/>
 
-        <button onClick={()=>getData()}>Get word!</button>
+        <NewWordButton onClick={()=>getData()}>Get new word!</NewWordButton>
 
-        {/* <Wordbank>
-          {letters}
-        </Wordbank> */}
-
-        {/* <button onClick={() => guessLetter(letters.concat("B"))}>
-          {letters}
-        </button> */}
       </Header>
     </Wrap>
   );
 }
+
+const NewWordButton = styled.button` 
+  position: relative;
+  top: -20rem;
+  left: -20rem;
+  height: 2rem;
+`
 
 const Wrap = styled.div`
   /* background-image: url({background}); */
@@ -68,13 +56,14 @@ const Wrap = styled.div`
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  overflow-y: hidden;
 `
 const Header = styled.header` 
   width: 100vw;
   height: 2rem;
   color: white;
   text-align: center;
-  font-size: 5rem;
+  font-size: 3rem;
   font-family: 'Permanent Marker', cursive;
 `
 const Wordbank = styled.p` 
